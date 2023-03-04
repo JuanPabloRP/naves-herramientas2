@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         int x, y, baja = 0, enemysVelocityH = 25, enemysVelocityV = 1;
         bool tocaMuroD = false, tocaMuroI = false, llegaAbajo = false, llegaArriba = true;
 
-        int imgFrancescoX = 0, imgFrancescoY = 0;
+        int imgPlayerX = 0, imgPlayerY = 0;
 
         public frmMain()
         {
@@ -33,18 +33,18 @@ namespace WindowsFormsApp1
         private void tmrFiuu_Tick(object sender, EventArgs e)
         {
             //obtenemos la posicion del enemy (el rayo mcqueen)
-            x = imgMcQueen.Location.X;
-            y = imgMcQueen.Location.Y;
+            x = imgEnemy.Location.X;
+            y = imgEnemy.Location.Y;
 
             //Estos ifs sirven para que no se salga de la pantalla ni por arriba ni por abajo
             //verifica que el enemy nunca se pase por afuera de la ventana por encima
-            if (imgMcQueen.Location.Y <= 0)
+            if (imgEnemy.Location.Y <= 0)
             {
                 llegaArriba = true;
                 llegaAbajo = false;
             }
             //verifica que el enemy no llegue a un height mas alto que el de la ventana
-            if (imgMcQueen.Location.Y >= (Size.Height - (imgMcQueen.Size.Height * 2)))
+            if (imgEnemy.Location.Y >= (Size.Height - (imgEnemy.Size.Height * 2)))
             {
                 llegaAbajo = true;
                 llegaArriba = false;
@@ -53,14 +53,14 @@ namespace WindowsFormsApp1
             //verificamos que toque un muro y que no esté por afuera de la pantalla por arriba y lo ponemos a bajar
             if ( ( (tocaMuroD == true || tocaMuroI == true) && (llegaAbajo == false)) || llegaArriba == true ) {
                 llegaAbajo = false;
-                imgMcQueen.Location = new Point(x, y += enemysVelocityV );
+                imgEnemy.Location = new Point(x, y += enemysVelocityV );
             }
 
             //verificamos que toque un muro y que no esté por afuera de la pantalla por abajo y lo ponemos a subir
             if ( ( (tocaMuroD == true || tocaMuroI == true) && (llegaArriba == false)) || llegaAbajo == true)
             {
                 llegaArriba = false;
-                imgMcQueen.Location = new Point(x, y -= enemysVelocityV);
+                imgEnemy.Location = new Point(x, y -= enemysVelocityV);
             }
             
 
@@ -68,8 +68,9 @@ namespace WindowsFormsApp1
             //apenas toque un muro vaya y toque el otro
             if (tocaMuroD == false || tocaMuroI == true)
             {
-                imgMcQueen.Location = new Point(x + enemysVelocityH, y);
-                if (imgMcQueen.Location.X >= (lblMuroD.Location.X - imgMcQueen.Size.Width)) {
+                imgEnemy.Location = new Point(x + enemysVelocityH, y);
+                //if (imgMcQueen.Location.X >= (lblMuroD.Location.X - imgMcQueen.Size.Width))
+                if (imgEnemy.Location.X >= (Size.Width - imgEnemy.Size.Width)) {
                     tocaMuroD = true;
                     tocaMuroI = false;
                     baja += 1;
@@ -77,13 +78,21 @@ namespace WindowsFormsApp1
             }
             if (tocaMuroD == true || tocaMuroI == false)
             {
-                imgMcQueen.Location = new Point(x - enemysVelocityH, y);
-                if (imgMcQueen.Location.X < lblMuroI.Location.X)
+                imgEnemy.Location = new Point(x - enemysVelocityH, y);
+                //if (imgMcQueen.Location.X < lblMuroI.Location.X)
+                if (imgEnemy.Location.X <= (0 + (imgEnemy.Size.Width/2)))
                 {
                     tocaMuroI = true;
                     tocaMuroD = false;
                     baja += 1;
                 }
+            }
+
+
+
+            if (imgEnemy.Location == imgPlayer.Location)
+            {
+                MessageBox.Show("Perdiste, jaja tonto");
             }
 
         }
@@ -93,36 +102,37 @@ namespace WindowsFormsApp1
             tmrFiuu.Enabled = false;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblInicio_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
         {
-            imgFrancescoX = imgFrancesco.Location.X; 
-            imgFrancescoY = imgFrancesco.Location.Y;
+            imgPlayerX = imgPlayer.Location.X; 
+            imgPlayerY = imgPlayer.Location.Y;
 
 
-            label1.Text = "A: " + e.KeyChar;
+            
 
 
 
             if (e.KeyChar.ToString().ToUpper() == Convert.ToChar(Keys.A).ToString().ToUpper())
             {
-                imgFrancescoX -= 10;
-                imgFrancesco.Location = new Point(imgFrancescoX, imgFrancescoY);
+                imgPlayerX -= 10;
+                imgPlayer.Location = new Point(imgPlayerX, imgPlayerY);
             }else if (e.KeyChar.ToString().ToUpper() == Convert.ToChar(Keys.D).ToString().ToUpper())
             {
-                imgFrancescoX += 10;
-                imgFrancesco.Location = new Point(imgFrancescoX, imgFrancescoY);
+                imgPlayerX += 10;
+                imgPlayer.Location = new Point(imgPlayerX, imgPlayerY);
             }
-            
+            else if (e.KeyChar.ToString().ToUpper() == Convert.ToChar(Keys.W).ToString().ToUpper())
+            {
+                imgPlayerY -= 10;
+                imgPlayer.Location = new Point(imgPlayerX, imgPlayerY);
+            }
+            else if (e.KeyChar.ToString().ToUpper() == Convert.ToChar(Keys.S).ToString().ToUpper())
+            {
+                imgPlayerY += 10;
+                imgPlayer.Location = new Point(imgPlayerX, imgPlayerY);
+            }
+
 
         }
 

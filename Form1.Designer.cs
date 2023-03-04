@@ -33,14 +33,12 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.tmrFiuu = new System.Windows.Forms.Timer(this.components);
-            this.imgFrancesco = new System.Windows.Forms.PictureBox();
+            this.imgPlayer = new System.Windows.Forms.PictureBox();
             this.lblMuroI = new System.Windows.Forms.Label();
             this.lblMuroD = new System.Windows.Forms.Label();
-            this.imgMcQueen = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.imgFrancesco)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgMcQueen)).BeginInit();
+            this.imgEnemy = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEnemy)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -67,82 +65,65 @@
             // 
             this.tmrFiuu.Tick += new System.EventHandler(this.tmrFiuu_Tick);
             // 
-            // imgFrancesco
+            // imgPlayer
             // 
-            this.imgFrancesco.Image = ((System.Drawing.Image)(resources.GetObject("imgFrancesco.Image")));
-            this.imgFrancesco.Location = new System.Drawing.Point(387, 345);
-            this.imgFrancesco.Name = "imgFrancesco";
-            this.imgFrancesco.Size = new System.Drawing.Size(59, 53);
-            this.imgFrancesco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgFrancesco.TabIndex = 5;
-            this.imgFrancesco.TabStop = false;
+            this.imgPlayer.Image = ((System.Drawing.Image)(resources.GetObject("imgPlayer.Image")));
+            this.imgPlayer.Location = new System.Drawing.Point(382, 384);
+            this.imgPlayer.Name = "imgPlayer";
+            this.imgPlayer.Size = new System.Drawing.Size(53, 54);
+            this.imgPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPlayer.TabIndex = 5;
+            this.imgPlayer.TabStop = false;
             // 
             // lblMuroI
             // 
             this.lblMuroI.AutoSize = true;
-            this.lblMuroI.Location = new System.Drawing.Point(12, 0);
+            this.lblMuroI.ForeColor = System.Drawing.Color.Silver;
+            this.lblMuroI.Location = new System.Drawing.Point(731, 399);
             this.lblMuroI.Name = "lblMuroI";
-            this.lblMuroI.Size = new System.Drawing.Size(9, 533);
+            this.lblMuroI.Size = new System.Drawing.Size(9, 13);
             this.lblMuroI.TabIndex = 6;
-            this.lblMuroI.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n" +
-    "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n\r\n";
+            this.lblMuroI.Text = "|";
+            this.lblMuroI.Visible = false;
             // 
             // lblMuroD
             // 
             this.lblMuroD.AutoSize = true;
-            this.lblMuroD.Location = new System.Drawing.Point(854, 0);
+            this.lblMuroD.ForeColor = System.Drawing.Color.Silver;
+            this.lblMuroD.Location = new System.Drawing.Point(65, 399);
             this.lblMuroD.Name = "lblMuroD";
-            this.lblMuroD.Size = new System.Drawing.Size(9, 494);
+            this.lblMuroD.Size = new System.Drawing.Size(9, 13);
             this.lblMuroD.TabIndex = 7;
-            this.lblMuroD.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n" +
-    "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
+            this.lblMuroD.Text = "|";
+            this.lblMuroD.Visible = false;
             // 
-            // imgMcQueen
+            // imgEnemy
             // 
-            this.imgMcQueen.Image = ((System.Drawing.Image)(resources.GetObject("imgMcQueen.Image")));
-            this.imgMcQueen.Location = new System.Drawing.Point(426, 0);
-            this.imgMcQueen.Name = "imgMcQueen";
-            this.imgMcQueen.Size = new System.Drawing.Size(50, 41);
-            this.imgMcQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgMcQueen.TabIndex = 8;
-            this.imgMcQueen.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(531, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(534, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "label2";
+            this.imgEnemy.Image = ((System.Drawing.Image)(resources.GetObject("imgEnemy.Image")));
+            this.imgEnemy.Location = new System.Drawing.Point(382, 12);
+            this.imgEnemy.Name = "imgEnemy";
+            this.imgEnemy.Size = new System.Drawing.Size(48, 41);
+            this.imgEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgEnemy.TabIndex = 8;
+            this.imgEnemy.TabStop = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(875, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.imgMcQueen);
+            this.Controls.Add(this.imgEnemy);
             this.Controls.Add(this.lblMuroD);
             this.Controls.Add(this.lblMuroI);
-            this.Controls.Add(this.imgFrancesco);
+            this.Controls.Add(this.imgPlayer);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Name = "frmMain";
             this.Text = "Main form";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMain_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.imgFrancesco)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgMcQueen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEnemy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,12 +133,10 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Timer tmrFiuu;
-        private System.Windows.Forms.PictureBox imgFrancesco;
+        private System.Windows.Forms.PictureBox imgPlayer;
         private System.Windows.Forms.Label lblMuroI;
         private System.Windows.Forms.Label lblMuroD;
-        private System.Windows.Forms.PictureBox imgMcQueen;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox imgEnemy;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

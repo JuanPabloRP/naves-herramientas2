@@ -70,9 +70,9 @@
             // imgFrancesco
             // 
             this.imgFrancesco.Image = ((System.Drawing.Image)(resources.GetObject("imgFrancesco.Image")));
-            this.imgFrancesco.Location = new System.Drawing.Point(266, 184);
+            this.imgFrancesco.Location = new System.Drawing.Point(387, 345);
             this.imgFrancesco.Name = "imgFrancesco";
-            this.imgFrancesco.Size = new System.Drawing.Size(111, 105);
+            this.imgFrancesco.Size = new System.Drawing.Size(59, 53);
             this.imgFrancesco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgFrancesco.TabIndex = 5;
             this.imgFrancesco.TabStop = false;
@@ -90,18 +90,19 @@
             // lblMuroD
             // 
             this.lblMuroD.AutoSize = true;
-            this.lblMuroD.Location = new System.Drawing.Point(776, 0);
+            this.lblMuroD.Location = new System.Drawing.Point(854, 0);
             this.lblMuroD.Name = "lblMuroD";
-            this.lblMuroD.Size = new System.Drawing.Size(87, 546);
+            this.lblMuroD.Size = new System.Drawing.Size(9, 494);
             this.lblMuroD.TabIndex = 7;
-            this.lblMuroD.Text = resources.GetString("lblMuroD.Text");
+            this.lblMuroD.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n" +
+    "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
             // 
             // imgMcQueen
             // 
             this.imgMcQueen.Image = ((System.Drawing.Image)(resources.GetObject("imgMcQueen.Image")));
-            this.imgMcQueen.Location = new System.Drawing.Point(323, 12);
+            this.imgMcQueen.Location = new System.Drawing.Point(426, 0);
             this.imgMcQueen.Name = "imgMcQueen";
-            this.imgMcQueen.Size = new System.Drawing.Size(99, 68);
+            this.imgMcQueen.Size = new System.Drawing.Size(50, 41);
             this.imgMcQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgMcQueen.TabIndex = 8;
             this.imgMcQueen.TabStop = false;

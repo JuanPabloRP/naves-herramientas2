@@ -12,100 +12,70 @@ namespace WindowsFormsApp1
 {
     public partial class frmMain : Form
     {
-        int x;
-        int y;
-        int baja = 0;
-        bool tocaMuroD = false;
-        bool tocaMuroI = false;
-        int enemysVelocityH = 25;
-        int enemysVelocityV = 15;
+        int x, y, baja = 0, enemysVelocityH = 25, enemysVelocityV = 1;
+        bool tocaMuroD = false, tocaMuroI = false, llegaAbajo = false, llegaArriba = true;
 
-        private int pictureBoxX = 0;
-        private int pictureBoxY = 0;
+        int imgFrancescoX = 0, imgFrancescoY = 0;
 
         public frmMain()
         {
             InitializeComponent();
             this.KeyPreview = true;
-
-            this.KeyPreview = true;
-            pictureBox1 = new PictureBox();
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Size = new Size(100, 100);
-            pictureBox1.BackColor = Color.Red;
-            this.Controls.Add(pictureBox1);
         }
 
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-    {
-        if (keyData == Keys.Left)
-        {
-            pictureBoxX -= 10;
-            pictureBox1.Location = new Point(pictureBoxX, pictureBoxY);
-            return true;
-        }
-        else if (keyData == Keys.Right)
-        {
-            pictureBoxX += 10;
-            pictureBox1.Location = new Point(pictureBoxX, pictureBoxY);
-            return true;
-        }
-        else if (keyData == Keys.Up)
-        {
-            pictureBoxY -= 10;
-            pictureBox1.Location = new Point(pictureBoxX, pictureBoxY);
-            return true;
-        }
-        else if (keyData == Keys.Down)
-        {
-            pictureBoxY += 10;
-            pictureBox1.Location = new Point(pictureBoxX, pictureBoxY);
-            return true;
-        }
-        return base.ProcessCmdKey(ref msg, keyData);
-    }
+       
 
         private void btnStart_Click(object sender, EventArgs e)
-        {
-            
+        { 
             tmrFiuu.Enabled = true;
-            
         }
 
         private void tmrFiuu_Tick(object sender, EventArgs e)
         {
+            //obtenemos la posicion del enemy (el rayo mcqueen)
             x = imgMcQueen.Location.X;
             y = imgMcQueen.Location.Y;
 
-            //
+            //Estos ifs sirven para que no se salga de la pantalla ni por arriba ni por abajo
+            //verifica que el enemy nunca se pase por afuera de la ventana por encima
+            if (imgMcQueen.Location.Y <= 0)
+            {
+                llegaArriba = true;
+                llegaAbajo = false;
+            }
+            //verifica que el enemy no llegue a un height mas alto que el de la ventana
+            if (imgMcQueen.Location.Y >= (Size.Height - (imgMcQueen.Size.Height * 2)))
+            {
+                llegaAbajo = true;
+                llegaArriba = false;
+            }
+
+            //verificamos que toque un muro y que no esté por afuera de la pantalla por arriba y lo ponemos a bajar
+            if ( ( (tocaMuroD == true || tocaMuroI == true) && (llegaAbajo == false)) || llegaArriba == true ) {
+                llegaAbajo = false;
+                imgMcQueen.Location = new Point(x, y += enemysVelocityV );
+            }
+
+            //verificamos que toque un muro y que no esté por afuera de la pantalla por abajo y lo ponemos a subir
+            if ( ( (tocaMuroD == true || tocaMuroI == true) && (llegaArriba == false)) || llegaAbajo == true)
+            {
+                llegaArriba = false;
+                imgMcQueen.Location = new Point(x, y -= enemysVelocityV);
+            }
             
-            if (tocaMuroD == false)
+
+            
+            //apenas toque un muro vaya y toque el otro
+            if (tocaMuroD == false || tocaMuroI == true)
             {
                 imgMcQueen.Location = new Point(x + enemysVelocityH, y);
-                if (imgMcQueen.Location.X > lblMuroD.Location.X) {
+                if (imgMcQueen.Location.X >= (lblMuroD.Location.X - imgMcQueen.Size.Width)) {
                     tocaMuroD = true;
                     tocaMuroI = false;
                     baja += 1;
                 }
-
-                if (baja % 2 == 0 && baja != 0)
-                {
-                    imgMcQueen.Location = new Point(x, y += enemysVelocityV);
-                }
             }
-
-            if (tocaMuroD == true)
-            {
-                imgMcQueen.Location = new Point(x - enemysVelocityH, y);
-                
-                
-            }
-            
-
-            //
-            
-            if (tocaMuroI == false)
+            if (tocaMuroD == true || tocaMuroI == false)
             {
                 imgMcQueen.Location = new Point(x - enemysVelocityH, y);
                 if (imgMcQueen.Location.X < lblMuroI.Location.X)
@@ -115,12 +85,6 @@ namespace WindowsFormsApp1
                     baja += 1;
                 }
             }
-
-            if (tocaMuroI == true)
-            {
-                imgMcQueen.Location = new Point(x + enemysVelocityH, y);
-            }
-
 
         }
 
@@ -141,13 +105,25 @@ namespace WindowsFormsApp1
 
         private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
         {
+            imgFrancescoX = imgFrancesco.Location.X; 
+            imgFrancescoY = imgFrancesco.Location.Y;
+
+
             label1.Text = "A: " + e.KeyChar;
-            
-            if (e.KeyChar == Convert.ToChar(Keys.A))
+
+
+
+            if (e.KeyChar.ToString().ToUpper() == Convert.ToChar(Keys.A).ToString().ToUpper())
             {
-                MessageBox.Show("a");
+                imgFrancescoX -= 10;
+                imgFrancesco.Location = new Point(imgFrancescoX, imgFrancescoY);
+            }else if (e.KeyChar.ToString().ToUpper() == Convert.ToChar(Keys.D).ToString().ToUpper())
+            {
+                imgFrancescoX += 10;
+                imgFrancesco.Location = new Point(imgFrancescoX, imgFrancescoY);
             }
             
+
         }
 
         

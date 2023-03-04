@@ -43,7 +43,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(27, 415);
+            this.btnStart.Location = new System.Drawing.Point(12, 415);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(695, 415);
+            this.btnStop.Location = new System.Drawing.Point(708, 415);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 2;
@@ -67,11 +67,12 @@
             // 
             // imgPlayer
             // 
+            this.imgPlayer.BackColor = System.Drawing.Color.Transparent;
             this.imgPlayer.Image = ((System.Drawing.Image)(resources.GetObject("imgPlayer.Image")));
-            this.imgPlayer.Location = new System.Drawing.Point(382, 384);
+            this.imgPlayer.Location = new System.Drawing.Point(352, 344);
             this.imgPlayer.Name = "imgPlayer";
-            this.imgPlayer.Size = new System.Drawing.Size(53, 54);
-            this.imgPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPlayer.Size = new System.Drawing.Size(48, 43);
+            this.imgPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgPlayer.TabIndex = 5;
             this.imgPlayer.TabStop = false;
             // 
@@ -79,7 +80,7 @@
             // 
             this.lblMuroI.AutoSize = true;
             this.lblMuroI.ForeColor = System.Drawing.Color.Silver;
-            this.lblMuroI.Location = new System.Drawing.Point(731, 399);
+            this.lblMuroI.Location = new System.Drawing.Point(774, 399);
             this.lblMuroI.Name = "lblMuroI";
             this.lblMuroI.Size = new System.Drawing.Size(9, 13);
             this.lblMuroI.TabIndex = 6;
@@ -90,7 +91,7 @@
             // 
             this.lblMuroD.AutoSize = true;
             this.lblMuroD.ForeColor = System.Drawing.Color.Silver;
-            this.lblMuroD.Location = new System.Drawing.Point(65, 399);
+            this.lblMuroD.Location = new System.Drawing.Point(12, 399);
             this.lblMuroD.Name = "lblMuroD";
             this.lblMuroD.Size = new System.Drawing.Size(9, 13);
             this.lblMuroD.TabIndex = 7;
@@ -99,11 +100,12 @@
             // 
             // imgEnemy
             // 
+            this.imgEnemy.BackColor = System.Drawing.Color.Transparent;
             this.imgEnemy.Image = ((System.Drawing.Image)(resources.GetObject("imgEnemy.Image")));
-            this.imgEnemy.Location = new System.Drawing.Point(382, 12);
+            this.imgEnemy.Location = new System.Drawing.Point(352, 12);
             this.imgEnemy.Name = "imgEnemy";
-            this.imgEnemy.Size = new System.Drawing.Size(48, 41);
-            this.imgEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgEnemy.Size = new System.Drawing.Size(48, 38);
+            this.imgEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgEnemy.TabIndex = 8;
             this.imgEnemy.TabStop = false;
             // 
@@ -112,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(875, 450);
+            this.ClientSize = new System.Drawing.Size(795, 450);
             this.Controls.Add(this.imgEnemy);
             this.Controls.Add(this.lblMuroD);
             this.Controls.Add(this.lblMuroI);
@@ -122,6 +124,7 @@
             this.Name = "frmMain";
             this.Text = "Main form";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMain_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEnemy)).EndInit();
             this.ResumeLayout(false);

@@ -114,8 +114,30 @@ namespace WindowsFormsApp1
         //2- Con las teclas no se puede spamear pero cada paso es mas largo que usando A o D
         private void frmMain_KeyUp(object sender, KeyEventArgs e)
         {
+            if (imgPlayer.Location.X >= (0 + (imgPlayer.Width * 0.5)))
+            {
+                if (e.KeyCode == Keys.Left)
+                {
+                    imgPlayer.Location = new Point(imgPlayer.Location.X - playersVelocityWithArrows, imgPlayer.Location.Y);
+                }
+            }
 
-            if (imgPlayer.Location.X >= btnStart.Location.X)
+            if (imgPlayer.Location.X <= (Size.Width - (imgPlayer.Width * 2)))
+            {
+                if (e.KeyCode == Keys.Right)
+                {
+                    imgPlayer.Location = new Point(imgPlayer.Location.X + playersVelocityWithArrows, imgPlayer.Location.Y);
+                }
+            }
+
+        }
+
+    }
+}
+
+
+/*
+ if (imgPlayer.Location.X >= btnStart.Location.X)
             {
                 if (e.KeyCode == Keys.Left)
                 {
@@ -130,7 +152,4 @@ namespace WindowsFormsApp1
                     imgPlayer.Location = new Point(imgPlayer.Location.X + playersVelocityWithArrows, imgPlayer.Location.Y);
                 }
             }
-        }
-
-    }
-}
+ */

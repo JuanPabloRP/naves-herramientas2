@@ -37,8 +37,11 @@
             this.lblMuroI = new System.Windows.Forms.Label();
             this.lblMuroD = new System.Windows.Forms.Label();
             this.imgEnemy = new System.Windows.Forms.PictureBox();
+            this.imgDisparo = new System.Windows.Forms.PictureBox();
+            this.tmrDisparo = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEnemy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDisparo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -69,9 +72,9 @@
             // 
             this.imgPlayer.BackColor = System.Drawing.Color.Transparent;
             this.imgPlayer.Image = ((System.Drawing.Image)(resources.GetObject("imgPlayer.Image")));
-            this.imgPlayer.Location = new System.Drawing.Point(352, 344);
+            this.imgPlayer.Location = new System.Drawing.Point(344, 380);
             this.imgPlayer.Name = "imgPlayer";
-            this.imgPlayer.Size = new System.Drawing.Size(48, 43);
+            this.imgPlayer.Size = new System.Drawing.Size(57, 32);
             this.imgPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgPlayer.TabIndex = 5;
             this.imgPlayer.TabStop = false;
@@ -102,12 +105,25 @@
             // 
             this.imgEnemy.BackColor = System.Drawing.Color.Transparent;
             this.imgEnemy.Image = ((System.Drawing.Image)(resources.GetObject("imgEnemy.Image")));
-            this.imgEnemy.Location = new System.Drawing.Point(352, 12);
+            this.imgEnemy.Location = new System.Drawing.Point(344, 2);
             this.imgEnemy.Name = "imgEnemy";
-            this.imgEnemy.Size = new System.Drawing.Size(48, 38);
-            this.imgEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgEnemy.Size = new System.Drawing.Size(36, 31);
+            this.imgEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgEnemy.TabIndex = 8;
             this.imgEnemy.TabStop = false;
+            // 
+            // imgDisparo
+            // 
+            this.imgDisparo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.imgDisparo.Location = new System.Drawing.Point(375, 364);
+            this.imgDisparo.Name = "imgDisparo";
+            this.imgDisparo.Size = new System.Drawing.Size(5, 10);
+            this.imgDisparo.TabIndex = 9;
+            this.imgDisparo.TabStop = false;
+            // 
+            // tmrDisparo
+            // 
+            this.tmrDisparo.Tick += new System.EventHandler(this.tmrDisparo_Tick);
             // 
             // frmMain
             // 
@@ -115,6 +131,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(795, 450);
+            this.Controls.Add(this.imgDisparo);
             this.Controls.Add(this.imgEnemy);
             this.Controls.Add(this.lblMuroD);
             this.Controls.Add(this.lblMuroI);
@@ -127,6 +144,7 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEnemy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDisparo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +159,8 @@
         private System.Windows.Forms.Label lblMuroD;
         private System.Windows.Forms.PictureBox imgEnemy;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgDisparo;
+        private System.Windows.Forms.Timer tmrDisparo;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -9,16 +10,31 @@ namespace WindowsFormsApp1
         int imgEnemyX, imgEnemyY, enemysVelocityH = 40, enemysVelocityV = 4, playersVelocityWithArrows = 20, playersVelocityWithLetters = 7;
         bool tocaMuroD = false, tocaMuroI = false, llegaAbajo = false, llegaArriba = true;
 
-       
+        
+
+        int imgEnemyPosInitX = 0, imgEnemyPosInitY = 0;
+
         public frmMain()
         {
             InitializeComponent();
-            this.KeyPreview = true;
+            KeyPreview = true;
+            imgEnemyPosInitX = imgEnemy.Location.X;
+            imgEnemyPosInitY = imgEnemy.Location.Y;
+
+            imgDisparo.Location = new Point(imgPlayer.Location.X + (imgPlayer.Width / 2), imgPlayer.Location.Y + 5);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             tmrFiuu.Enabled = true;
+            tmrDisparo.Enabled = true;
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            tmrFiuu.Enabled = false;
+            tmrDisparo.Enabled = false;
+
         }
 
         private void tmrFiuu_Tick(object sender, EventArgs e)
@@ -81,13 +97,47 @@ namespace WindowsFormsApp1
 
                 }
             }
+
+
+            if(imgEnemy.Bounds.IntersectsWith(imgPlayer.Bounds))
+            {
+                tmrFiuu.Enabled = false;
+                tmrDisparo.Enabled = false;
+                MessageBox.Show("Perdiste");
+                imgEnemy.Location = new Point(imgEnemyPosInitX, imgEnemyPosInitY);
+                imgDisparo.Location = new Point(imgPlayer.Location.X + (imgPlayer.Width / 2), imgPlayer.Location.Y + 5);
+            }
+
+            if (imgEnemy.Bounds.IntersectsWith(imgDisparo.Bounds))
+            {
+                tmrFiuu.Enabled = false;
+                tmrDisparo.Enabled = false;
+                MessageBox.Show("Ganaste");
+                imgEnemy.Location = new Point(imgEnemyPosInitX, imgEnemyPosInitY);
+                imgDisparo.Location = new Point(imgPlayer.Location.X + (imgPlayer.Width / 2), imgPlayer.Location.Y + 5);
+            }
+
+
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        private void tmrDisparo_Tick(object sender, EventArgs e)
         {
-            tmrFiuu.Enabled = false;
+            while(imgDisparo.Location.Y > 0 && tmrFiuu.Enabled == true)
+            {
+                //a
+                imgDisparo.Location = new Point(imgDisparo.Location.X, imgDisparo.Location.Y - 5);
+                Application.DoEvents(); // Permite actualizar la ventana
+                Thread.Sleep(20); // Retrasar el hilo durante 20 milisegundos
+            }
+
+            if (imgDisparo.Location.Y >= 0)
+            {
+                imgDisparo.Location = new Point(imgPlayer.Location.X + (imgPlayer.Width / 2), imgPlayer.Location.Y + 5);
+            }
+            
         }
 
+        
         //Puede moverse de dos maneras
 
         //1-Spameando A o D pero cada paso es mas lento que usando las flechas
@@ -130,26 +180,25 @@ namespace WindowsFormsApp1
                 }
             }
 
+
+            if(e.KeyCode == Keys.Space)
+            {
+               
+
+
+
+                
+               
+                
+
+               
+            }
+
+            
+
         }
 
     }
 }
 
 
-/*
- if (imgPlayer.Location.X >= btnStart.Location.X)
-            {
-                if (e.KeyCode == Keys.Left)
-                {
-                    imgPlayer.Location = new Point(imgPlayer.Location.X - playersVelocityWithArrows, imgPlayer.Location.Y);
-                }
-            }
-
-            if (imgPlayer.Location.X <= (btnStop.Location.X + (btnStop.Size.Width * 0.2)))
-            {
-                if (e.KeyCode == Keys.Right)
-                {
-                    imgPlayer.Location = new Point(imgPlayer.Location.X + playersVelocityWithArrows, imgPlayer.Location.Y);
-                }
-            }
- */

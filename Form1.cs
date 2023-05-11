@@ -9,10 +9,13 @@ namespace WindowsFormsApp1
     {
         int imgEnemyX, imgEnemyY, enemysVelocityH = 40, enemysVelocityV = 4, playersVelocityWithArrows = 20, playersVelocityWithLetters = 7;
         bool tocaMuroD = false, tocaMuroI = false, llegaAbajo = false, llegaArriba = true;
-
-        
-
         int imgEnemyPosInitX = 0, imgEnemyPosInitY = 0;
+
+        /// <summary>
+        ///  Juan Pablo Roldan Patiño
+        ///  2023
+        ///  juego de naves, haciendo uso del teclado
+        /// </summary>
 
         public frmMain()
         {
